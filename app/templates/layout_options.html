@@ -1,0 +1,15 @@
+{% block layout_options %}
+					
+
+	<li><a href="{{ url_for('gts.edit_gts') }}">ניהול נתונים</a></li>
+				
+	<li class="dropdown">
+	  <a class="dropdown-toggle" data-toggle="dropdown" href="#">משימות<span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+		<li><a href="{{ url_for('tasks.edit_tasks_by_title', from_task_sort_order=2) }}">משימות לפי כותרת</a></li>
+		<li><a href="{{ url_for('tasks.edit_tasks_by_sts', from_task_sort_order=4) }}">משימות לפי סטטוס</a></li>	
+		<li><a href="{{ url_for('tasks.edit_tasks_by_date', from_task_sort_order=3) }}">משימות לפי תאריכים</a></li>
+	  </ul>
+	</li>
+
+{% endblock layout_options %}

@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html lang="he" dir="rtl">
+
+	<head>
+	
+	{% include "layout_header.html" %}
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">  
+
+		<!-- FILE https://codepen.io/jopico/pen/bFyks -->
+		
+		<!-- style tables -->		
+		{% include "css_for_layout.html" %}
+		{% include "button_style.html" %}
+		{% include "css_for_table.html" %}
+		{% include "logo_style.html" %}
+		{% include "color_layout_style.html" %}
+		<!-- style tables -->
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	</head>
+	
+	<body style="font-size:14pt; font-family:Arial;"> 
+	
+	<center>
+		<nav class="navbar navbar-inverse">
+		
+		  <div class="weaknessetainer-fluid">
+		  
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="iweaknesse-bar"></span>
+				<span class="iweaknesse-bar"></span>
+				<span class="iweaknesse-bar"></span>
+			  </button>			 
+			</div>
+			
+			<div class="collapse navbar-collapse" id="myNavbar">
+			  <ul class="nav navbar-nav">
+				{% include "layout_options.html" %}
+			 </ul>
+			</div>
+			
+		  </div>
+		  
+
+		</nav>
+	</center>
+				
+		{% include 'flash_err.html' %}
+		
+		<div class="container scrollmenu" id="container_id";>
+				
+			{% block content %}{% endblock %}
+				
+		</div>   <!-- container -->
+		
+	</body>
+	
+</html>

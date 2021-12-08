@@ -1,0 +1,21 @@
+
+<style>
+
+
+</style>
+
+{% block task_actions %}
+
+<footer>
+
+	<span style="align: center;">
+		
+		<button type="button" id="act_btn"><a style="color:black" href="{{ url_for('tasks.dsply_task_form_for_update2', selected_task_id=task.id, from_task_sort_order=from_task_sort_order) }}">פרטים</a></button>		
+		
+		<button type="button" id="act_btn"><a style="color:black" href="{{ url_for('tasks.task_delete2', selected_task_id=task.id, from_task_sort_order=from_task_sort_order) }}">מחק</a></button>
+
+	</span>
+	
+</footer>
+
+{% endblock task_actions %}

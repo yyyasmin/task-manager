@@ -1,0 +1,56 @@
+{% block class_ar_dropdown %} 
+
+
+<style>
+ul.tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.tabs>li.tab {
+  flex: 1;
+  text-align: center;
+  /* just adding visibility to the tabs */
+  border: 1px solid rgba(0,0,0,.12); 
+  padding: 10px;
+}
+
+
+input {
+	width: 100%;
+}
+
+#submit_button {
+	display: block;
+	margin: 0 auto;
+	width:fit-content;
+}
+
+</style>
+	
+	<div style = "text-align:center; width:100%">
+				
+		<ul class="tabs">
+											
+			<li class="tab " id="tab-3">
+				<label for="selected_class">בחר נושא</label>
+				<select class="select" onchange="this.dataset.chosen = this.value;" name="selected_class" id="selected_class">	
+					{% for class in classs %}
+						{% if class.id == default_class.id %}
+							<option value="{{ class.title }}" selected="selected">{{ class.title }}</option>
+						{% else %}
+							<option value="{{ class.title }}">{{ class.title }}</option>
+						{% endif %}
+					{% endfor %}
+				</select>					
+			</li>									
+											
+		</ul>
+												
+	</div>
+
+{% endblock class_ar_dropdown %}
