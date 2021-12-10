@@ -61,7 +61,7 @@ table, th, td {
 		
 
 				{% for task in tasks %}
-					{% for sts in statuss %}
+					{% for sts in statuss if task.is_parent_of(sts) %}
 										
 						<tr>
 							<td>{{ task.date }}</td>

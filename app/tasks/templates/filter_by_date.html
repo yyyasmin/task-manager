@@ -34,14 +34,8 @@ table, th, td {
 
 </style>
 
-{% include "./search_by_status.html" %}
 
-{% with from_task_sort_order=2 %}
-	{% include "./disply_date_btns.html" %}
-{% endwith %}
-
-
-<h2><center>משימות לפי כותרת</center></h2>	
+<h2><center>משימות לפי תאריך</center></h2>	
 	<button class="btn btn-info btn-xs" id="add_button"><h5><strong>
 		<a href="{{ url_for('tasks.add_task', from_task_sort_order=2) }}">הוסף משימה</a>
 	<strong></h5></button>
@@ -58,30 +52,24 @@ table, th, td {
 			</tr>
 			
 			{% for task in tasks %}
-			
-				{% for sts in statuss %}
-				
-					{% if task.is_parent_of(sts)  %}
-									
-							<tr>
-								<td>{{ task.title }}</td>
-								<td>{{ sts.title }}</td>
-								<td>{{ task.due_date }}</td>
-								<td>{{ task.body }}</td>
+			{% for sts in statuss if task.is_parent_of(sts) %}
 								
-								<td>	
-									{% with from_task_sort_order=2 %}		
-										{% include "task_actions.html" %}
-									{% endwith %}
-								</td>
-								
-							</tr>
-						
-						{% endif %}
-			
-			{% endfor %}  <!-- statuss -->			
-		
-		{% endfor %}  <!-- tms -->
+						<tr>
+							<td>{{ task.title }}</td>
+							<td>{{ sts.title }}</td>
+							<td>{{ task.due_date }}</td>
+							<td>{{ task.body }}</td>
+							
+							<td>	
+								{% with from_task_sort_order=2 %}		
+									{% include "task_actions.html" %}
+								{% endwith %}
+							</td>
+							
+						</tr>
+					
+		{% endfor %}  <!-- statuss -->
+		{% endfor %}  <!-- tasks -->
 		
 	</table>
 

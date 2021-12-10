@@ -168,11 +168,11 @@ def edit_gts():
      
     return render_template('edit_gts.html', gts=res, form=form)
 
-
        
 @gt.route('/get_all_gts', methods=['GET', 'POST'])
 def get_all_gts():
     return General_txt.query.filter(General_txt.hide == False).filter(General_txt.class_name != 'Gt_class').order_by(General_txt.title).all()
+
 
 @gt.route('/gt_filtered_gts', methods=['GET', 'POST'])
 def gt_filtered_gts(form):

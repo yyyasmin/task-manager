@@ -246,6 +246,10 @@ class Todo(General_txt):
     id = db.Column(db.ForeignKey(General_txt.id), primary_key=True)
     status_id = db.Column(db.ForeignKey(Status.id), primary_key=False)
     
+    due_date = db.Column(db.Date)
+    
+    
+    
     def __init__(self ,title, body):
         
         self.h_name = 'משימה'   
@@ -277,8 +281,28 @@ class Todo_form(FlaskForm):
   
     sts = SelectField('סטאטוס ביצוע', choices=[],validators=[validators.Required(message=('יש לבחור סטאטוס ביצוע'))])
   
-    due_date =  DateField('תאריך יעד')
+    due_date =  DateField('תאריך יעד', format='%d-%m-%Y')
          
     submit = SubmitField("שמור")	
+    
+############################################ Todo_form
+
+
+############################################ Todo_form
+#FROM https://stackoverflow.com/questions/7979548/how-to-render-my-textarea-with-wtforms
+########################################## Todo     
+class Search_by_field_form(FlaskForm):
+    id = db.Column(db.Integer, primary_key=True)
+    
+    title = TextField("כותרת משימה",[validators.Required("יש להכניס כותרת")])                                   
+    body =  TextField("תאור משימה", render_kw={"rows": 70, "cols": 90})
+  
+    sts = SelectField('סטאטוס ביצוע', choices=[],validators=[validators.Required(message=('יש לבחור סטאטוס ביצוע'))])
+  
+    due_date =  DateField('תאריך יעד', format='%d-%m-%Y')
+    from_date =  DateField('החל מתאריך', format='%d-%m-%Y')
+    to_date =  DateField('עד תאריך', format='%d-%m-%Y')
+         
+    submit = SubmitField("שלח לחיפוש...")	
     
 ############################################ Todo_form

@@ -1,0 +1,93 @@
+
+{% block dsply_date %}
+
+<style>
+ul.tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.tabs>li.tab {
+  flex: 1;
+  text-align: center;
+  /* just adding visibility to the tabs */
+  border: 1px solid rgba(0,0,0,.12); 
+  padding: 10px;
+}
+
+
+input {
+	width: 100%;
+}
+
+#submit_button {
+	display: block;
+	margin: 0 auto;
+	width:fit-content;
+}
+
+</style>
+
+
+<!-- FROM https://www.tutorialspoint.com/flask/flask_wtf.htm -->		
+<!-- <div style = "font-size:20px; font-weight:bold;  float:right; text-align:center; width:100%"> -->
+<div style = "text-align:center; width:42%; margin:5%;">
+<fieldset>
+	<form method="POST" action="{{ url_for('tasks.get_filtered_dates',from_task_sort_order=from_task_sort_order) }}">
+				
+		{{ form.csrf_token }}
+
+<ul class="tabs">
+						
+	<li class="tab " id="tab-4"><span class="tab-title">
+		
+		<div id="tag_div" class="form-group">
+		  <label for="from_date">החל מתאריך:</label>
+		  <center>
+		<input type="date" style="width:50%" class="form-control" id="from_date" name="from_date">
+		  </center>
+		</div>
+						
+		<div id="tag_div" class="form-group">
+		  <label for="to_date">עד תאריך:</label>
+		  <center>
+		<input type="date" style="width:50%" class="form-control" id="to_date" name="to_date">
+		  </center>
+		</div>
+
+		<button type="submit" class="btn btn-success">שלח לחיפוש...</button>
+
+	</li>
+			
+</ul>
+																
+	</form>
+</fieldset>
+</div>
+<!-- FROM https://www.tutorialspoint.com/flask/flask_wtf.htm -->					
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/tree_list_plus.js') }}"></script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  }
+}
+</script>
+							
+
+{% endblock dsply_date %}

@@ -1,0 +1,64 @@
+
+{% block ttt %}
+
+
+<style>
+
+.textareaContainer {	
+	align: center;
+	text-align:right;
+	width: 100%;
+
+}
+  
+#textarea_id { 
+	border: 3px solid #555c;	
+	align: center;
+	text-align:right;
+	width: 100%;
+	cols: 130;
+}
+ 
+</style>
+
+	<form method="POST" action="{{ url_for('tasks.ttt',from_task_sort_order=from_task_sort_order) }}">	
+			
+		<div class="form-group">
+		
+		  <label for="from_date">החל מתאריך:</label>
+		  <input type="date" class="form-control" id="from_date" name="from_date"> 
+		
+		</div>
+		
+		<div class="form-group">
+		  <label for="to_date">עד תאריך:</label>
+		  <input type="date" class="form-control" id="to_date" name="to_date"> 
+		</div>
+									
+		<div class="form-group">
+			<button type="submit" class="btn btn-success">שלח לחיפוש...</button>
+		</div>
+	
+	</form>	
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/tree_list_plus.js') }}"></script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  }
+}
+</script>
+							
+{% endblock ttt %}
+
